@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "organization": "Engineering",
+  "date": "March 2026",
+  "abstract": "Minimal JavaScript guidance for readable and maintainable logic.",
+  "references": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+  ]
+}
