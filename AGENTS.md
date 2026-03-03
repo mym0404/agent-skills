@@ -5,32 +5,88 @@ This file provides guidance to coding agents working in this repository.
 ## Repository Overview
 
 This repository stores agent skills in a consistent, rule-based structure.
+Each skill is a self-contained directory under `skills/` with documentation, rules, and metadata.
 
-## Creating a New Skill
+There are no build, lint, or test commands — this is a pure Markdown + JSON documentation repo.
 
-### Directory Structure
+## Current Skills
+
+| Skill | Version | Rules | Description |
+|-------|---------|-------|-------------|
+| `electron-skills` | 1.0.0 | 2 | Type-safe Electron IPC architecture |
+| `js-skills` | 2.0.0 | 5 | Zod schema definition patterns |
+| `next-skills` | 1.0.0 | 1 | Next.js server-first data fetching |
+| `react-native-skills` | 1.0.0 | 1 | React Native list performance |
+
+## Directory Structure
 
 ```text
 skills/
   {skill-name}/
-    SKILL.md
-    AGENTS.md
-    metadata.json
+    SKILL.md          # Skill overview, rule list, quick reference
+    AGENTS.md         # Full compiled guidance (loaded by agents)
+    metadata.json     # Version, abstract, references
     rules/
-      _sections.md
-      _template.md
-      {prefix}-{rule-name}.md
+      _sections.md    # Section ordering and prefix definitions
+      _template.md    # Template for new rules
+      {prefix}-{rule-name}.md   # Individual rule files
 ```
 
-### Naming Conventions
+## CRITICAL: File Synchronization Rule
 
-- Skill directory: `kebab-case` (for example, `js-skills`)
-- `SKILL.md`: uppercase and exact filename
-- `AGENTS.md`: uppercase and exact filename
-- Rule files: `{prefix}-{rule-name}.md`
-- Rule prefixes must be defined in `rules/_sections.md`
+When adding, removing, or modifying a skill, **ALL of the following files MUST be updated together**:
 
-### SKILL.md Format
+| File | What to sync |
+|------|-------------|
+| `SKILL.md` | Rule list in Quick Reference, version in frontmatter |
+| `AGENTS.md` | Compiled content reflecting all current rules |
+| `metadata.json` | Version number, abstract, references |
+| `rules/_sections.md` | Section definitions and prefixes |
+| `rules/{prefix}-{rule-name}.md` | Actual rule files |
+
+### Sync checklist (run after every change)
+
+- [ ] `name` in `SKILL.md` frontmatter matches the parent directory name
+- [ ] Every rule listed in `SKILL.md` Quick Reference has a corresponding file in `rules/`
+- [ ] Every rule file in `rules/` (excluding `_sections.md`, `_template.md`) is listed in `SKILL.md`
+- [ ] Every rule prefix used in rule filenames is defined in `rules/_sections.md`
+- [ ] `metadata.json` `version` matches `SKILL.md` frontmatter `metadata.version`
+- [ ] `AGENTS.md` covers all rules currently in `rules/`
+- [ ] No orphaned rule files (file exists but not referenced anywhere)
+- [ ] No phantom references (listed in `SKILL.md` but file doesn't exist)
+
+**Violation of sync = broken skill. Agents MUST verify sync before finishing any skill modification.**
+
+## Creating a New Skill
+
+### 1. Create directory structure
+
+```bash
+mkdir -p skills/{skill-name}/rules
+```
+
+### 2. Create all required files
+
+- `SKILL.md` — frontmatter + rule list
+- `AGENTS.md` — full compiled guidance
+- `metadata.json` — version and references
+- `rules/_sections.md` — section definitions
+- `rules/_template.md` — rule template
+- `rules/{prefix}-{rule-name}.md` — at least one rule
+
+### 3. Verify sync checklist above
+
+## Naming Conventions
+
+| Element | Convention | Example |
+|---------|-----------|---------|
+| Skill directory | `kebab-case` | `electron-skills` |
+| `SKILL.md` | Exact uppercase filename | `SKILL.md` |
+| `AGENTS.md` | Exact uppercase filename | `AGENTS.md` |
+| Rule files | `{prefix}-{rule-name}.md` | `ipc-type-safe-architecture.md` |
+| Rule prefixes | Defined in `_sections.md` | `ipc-`, `definition-`, `usage-` |
+
+## SKILL.md Format
 
 ```markdown
 ---
@@ -43,24 +99,51 @@ metadata:
 ---
 ```
 
-### Authoring Rules
+## Authoring Rules
 
-Each rule file should include:
+Each rule file MUST include:
 
+- YAML frontmatter (`title`, `impact`, `impactDescription`, `tags`)
 - Clear problem statement
-- Incorrect example and why it fails
-- Correct example and why it is safer/faster
+- **Incorrect** example with explanation of why it fails
+- **Correct** example with explanation of why it's better
 - Reference links
 
-### Context Efficiency
+### Style guidelines
 
-- Keep `SKILL.md` concise
-- Put deep guidance in `rules/*.md`
+- Write all rule content in English
+- Keep `SKILL.md` concise — put deep guidance in `rules/*.md`
 - Use explicit relative file references from `SKILL.md`
+- One independent pattern = one rule file
+- If multiple concepts are interdependent parts of the same architecture, keep them in a single rule file
+- Don't split a single cohesive pattern into multiple rules
 
-### Validation Checklist
+### Rule granularity
 
-- `name` in `SKILL.md` matches parent directory name
-- Every rule listed in `SKILL.md` exists in `rules/`
-- Every rule prefix exists in `rules/_sections.md`
-- `metadata.json` version matches `SKILL.md` metadata version
+**Separate rules** when patterns are independently applicable:
+
+```
+definition-naming-convention.md   # Can use without knowing type-inference
+definition-type-inference.md      # Can use without knowing naming-convention
+```
+
+**Single rule** when patterns form one cohesive flow:
+
+```
+ipc-type-safe-architecture.md     # API type → bridge → handler → registration = one flow
+```
+
+## Modifying an Existing Skill
+
+1. Make the content change (add/edit/delete rule files)
+2. Update `SKILL.md` Quick Reference to reflect current rules
+3. Update `AGENTS.md` compiled content
+4. Bump `version` in both `SKILL.md` frontmatter and `metadata.json` if changing rules
+5. Update `rules/_sections.md` if adding/removing prefixes
+6. Run sync checklist
+7. Update the Current Skills table in this root `AGENTS.md` if version or rule count changed
+
+## Deleting a Skill
+
+1. Remove the entire `skills/{skill-name}/` directory
+2. Update the Current Skills table in this root `AGENTS.md`
