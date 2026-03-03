@@ -15,8 +15,7 @@ There are no build, lint, or test commands — this is a pure Markdown + JSON do
 |-------|---------|-------|-------------|
 | `electron-skills` | 1.0.0 | 2 | Type-safe Electron IPC architecture |
 | `js-skills` | 2.0.0 | 5 | Zod schema definition patterns |
-| `next-skills` | 1.0.0 | 1 | Next.js server-first data fetching |
-| `react-native-skills` | 1.0.0 | 1 | React Native list performance |
+| `react-skills` | 2.0.0 | 2 | React data fetching (server-first + client AsyncBoundary) |
 
 ## Directory Structure
 
@@ -24,12 +23,11 @@ There are no build, lint, or test commands — this is a pure Markdown + JSON do
 skills/
   {skill-name}/
     SKILL.md          # Skill overview, rule list, quick reference
-    AGENTS.md         # Full compiled guidance (loaded by agents)
     metadata.json     # Version, abstract, references
     rules/
       _sections.md    # Section ordering and prefix definitions
       _template.md    # Template for new rules
-      {prefix}-{rule-name}.md   # Individual rule files
+      {prefix}-{rule-name}.md   # Individual rule files (source of truth)
 ```
 
 ## CRITICAL: File Synchronization Rule
@@ -39,10 +37,9 @@ When adding, removing, or modifying a skill, **ALL of the following files MUST b
 | File | What to sync |
 |------|-------------|
 | `SKILL.md` | Rule list in Quick Reference, version in frontmatter |
-| `AGENTS.md` | Compiled content reflecting all current rules |
 | `metadata.json` | Version number, abstract, references |
 | `rules/_sections.md` | Section definitions and prefixes |
-| `rules/{prefix}-{rule-name}.md` | Actual rule files |
+| `rules/{prefix}-{rule-name}.md` | Actual rule files (source of truth) |
 
 ### Sync checklist (run after every change)
 
@@ -51,7 +48,6 @@ When adding, removing, or modifying a skill, **ALL of the following files MUST b
 - [ ] Every rule file in `rules/` (excluding `_sections.md`, `_template.md`) is listed in `SKILL.md`
 - [ ] Every rule prefix used in rule filenames is defined in `rules/_sections.md`
 - [ ] `metadata.json` `version` matches `SKILL.md` frontmatter `metadata.version`
-- [ ] `AGENTS.md` covers all rules currently in `rules/`
 - [ ] No orphaned rule files (file exists but not referenced anywhere)
 - [ ] No phantom references (listed in `SKILL.md` but file doesn't exist)
 
@@ -68,7 +64,6 @@ mkdir -p skills/{skill-name}/rules
 ### 2. Create all required files
 
 - `SKILL.md` — frontmatter + rule list
-- `AGENTS.md` — full compiled guidance
 - `metadata.json` — version and references
 - `rules/_sections.md` — section definitions
 - `rules/_template.md` — rule template
@@ -82,7 +77,6 @@ mkdir -p skills/{skill-name}/rules
 |---------|-----------|---------|
 | Skill directory | `kebab-case` | `electron-skills` |
 | `SKILL.md` | Exact uppercase filename | `SKILL.md` |
-| `AGENTS.md` | Exact uppercase filename | `AGENTS.md` |
 | Rule files | `{prefix}-{rule-name}.md` | `ipc-type-safe-architecture.md` |
 | Rule prefixes | Defined in `_sections.md` | `ipc-`, `definition-`, `usage-` |
 
@@ -137,11 +131,10 @@ ipc-type-safe-architecture.md     # API type → bridge → handler → registra
 
 1. Make the content change (add/edit/delete rule files)
 2. Update `SKILL.md` Quick Reference to reflect current rules
-3. Update `AGENTS.md` compiled content
-4. Bump `version` in both `SKILL.md` frontmatter and `metadata.json` if changing rules
-5. Update `rules/_sections.md` if adding/removing prefixes
-6. Run sync checklist
-7. Update the Current Skills table in this root `AGENTS.md` if version or rule count changed
+3. Bump `version` in both `SKILL.md` frontmatter and `metadata.json` if changing rules
+4. Update `rules/_sections.md` if adding/removing prefixes
+5. Run sync checklist
+6. Update the Current Skills table in this root `AGENTS.md` if version or rule count changed
 
 ## Deleting a Skill
 
