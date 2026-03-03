@@ -1,9 +1,10 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "organization": "Engineering",
   "date": "March 2026",
-  "abstract": "Minimal JavaScript guidance for readable and maintainable logic.",
+  "abstract": "Zod schema definition patterns for domain model validation, composition, and instance creation.",
   "references": [
-    "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    "https://zod.dev",
+    "https://github.com/colinhacks/zod"
   ]
 }
