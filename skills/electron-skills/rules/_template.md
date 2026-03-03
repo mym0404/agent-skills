@@ -2,7 +2,7 @@
 title: Rule Title Here
 impact: MEDIUM
 impactDescription: Optional impact description
-tags: electron, security
+tags: electron, ipc
 ---
 
 ## Rule Title Here

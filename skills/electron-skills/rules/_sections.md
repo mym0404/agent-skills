@@ -1,6 +1,6 @@
 # Sections
 
-## 1. Security Boundary (security)
+## 1. IPC Architecture (ipc)
 
 **Impact:** CRITICAL
-**Description:** Keep renderer access narrow and explicit through preload APIs.
+**Description:** End-to-end type-safe IPC communication between Electron main, preload, and renderer processes using centralized API types and helper functions.

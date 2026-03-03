@@ -1,8 +1,9 @@
 ---
 name: electron-skills
 description: >
-  Electron best practices for secure preload boundaries and safe IPC patterns.
-  Use when building or refactoring Electron main/preload/renderer code.
+  Type-safe Electron IPC architecture with centralized API types, helper functions,
+  and a 5-step process for adding new IPC endpoints.
+  Use when building or extending Electron main/preload/renderer IPC communication.
 license: MIT
 metadata:
   author: mj
@@ -11,24 +12,26 @@ metadata:
 
 # Electron Skills
 
-Compact guidance for safe Electron architecture.
+End-to-end type-safe IPC architecture for Electron apps.
 
 ## Rule Categories by Priority
 
-| Priority | Category          | Impact   | Prefix      |
-| -------- | ----------------- | -------- | ----------- |
-| 1        | Security Boundary | CRITICAL | `security-` |
+| Priority | Category         | Impact   | Prefix |
+| -------- | ---------------- | -------- | ------ |
+| 1        | IPC Architecture | CRITICAL | `ipc-` |
 
 ## Quick Reference
 
-- `security-minimal-preload-api` - Expose only narrow APIs via preload
+- `ipc-type-safe-architecture` — Central API type, helper functions, preload bridges, main handlers, 5-step wiring process
+- `ipc-app-error-system` — Structured error handling across IPC boundary with throwAppError / catchAppError
 
 ## How to Use
 
-Read the rule file for examples:
+Read rule files for examples:
 
 ```
-rules/security-minimal-preload-api.md
+rules/ipc-type-safe-architecture.md
+rules/ipc-app-error-system.md
 ```
 
 ## Full Compiled Document
