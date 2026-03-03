@@ -2,7 +2,7 @@
 title: Rule Title Here
 impact: MEDIUM
 impactDescription: Optional impact description
-tags: react-native, performance
+tags: react, app-router
 ---
 
 ## Rule Title Here

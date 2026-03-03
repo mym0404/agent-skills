@@ -1,9 +1,0 @@
-{
-  "version": "1.0.0",
-  "organization": "Engineering",
-  "date": "March 2026",
-  "abstract": "Minimal React Native guidance for performant large lists.",
-  "references": [
-    "https://shopify.github.io/flash-list/"
-  ]
-}

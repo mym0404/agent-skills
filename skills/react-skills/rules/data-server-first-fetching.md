@@ -2,7 +2,7 @@
 title: Prefer Server-First Fetching
 impact: HIGH
 impactDescription: Improves first paint and simplifies client state
-tags: nextjs, server-components, data-fetching
+tags: react, server-components, data-fetching
 ---
 
 ## Prefer Server-First Fetching

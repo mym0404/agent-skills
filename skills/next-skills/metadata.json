@@ -1,9 +1,0 @@
-{
-  "version": "1.0.0",
-  "organization": "Engineering",
-  "date": "March 2026",
-  "abstract": "Minimal Next.js guidance for server-first data fetching.",
-  "references": [
-    "https://nextjs.org/docs/app/building-your-application/data-fetching"
-  ]
-}
