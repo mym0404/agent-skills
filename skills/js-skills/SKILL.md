@@ -26,34 +26,30 @@ Reference these guidelines when:
 
 ## Rule Categories by Priority
 
-| Priority | Category           | Impact | Prefix        |
-| -------- | ------------------ | ------ | ------------- |
-| 1        | Schema Definition  | HIGH   | `definition-` |
-| 2        | Schema Usage       | HIGH   | `usage-`      |
+| Priority | Category         | Impact | Prefix    |
+| -------- | ---------------- | ------ | --------- |
+| 1        | Schema Patterns  | HIGH   | `schema-` |
 
 ## Quick Reference
 
-### 1. Schema Definition (HIGH)
+### 1. Schema Patterns (HIGH)
 
-- `definition-naming-convention` — Consistent naming for schemas, types, and files
-- `definition-type-inference` — Derive types from schemas with z.infer
-- `definition-const-enum` — Const assertion arrays + z.enum integration
-
-### 2. Schema Usage (HIGH)
-
-- `usage-schema-composition` — Compose schemas via nesting, pick, partial
-- `usage-create-model` — Use createModel for instance creation with auto base fields
+- `schema-naming-convention` — Consistent naming for schemas, types, and files
+- `schema-type-inference` — Derive types from schemas with z.infer
+- `schema-const-enum` — Const assertion arrays + z.enum integration
+- `schema-composition` — Compose schemas via nesting, pick, partial
+- `schema-create-model` — Use createModel for instance creation with auto base fields
 
 ## How to Use
 
 Read individual rule files for details and examples:
 
 ```
-rules/definition-naming-convention.md
-rules/definition-type-inference.md
-rules/definition-const-enum.md
-rules/usage-schema-composition.md
-rules/usage-create-model.md
+rules/schema-naming-convention.md
+rules/schema-type-inference.md
+rules/schema-const-enum.md
+rules/schema-composition.md
+rules/schema-create-model.md
 ```
 
 Each rule file contains:

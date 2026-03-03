@@ -14,17 +14,16 @@ Zod schema definition patterns for domain model validation, composition, and ins
 
 ## Table of Contents
 
-1. [Schema Definition](#1-schema-definition) - **HIGH**
+1. [Schema Patterns](#1-schema-patterns) - **HIGH**
    - 1.1 [Schema Naming Convention](#11-schema-naming-convention)
    - 1.2 [Type Inference from Schema](#12-type-inference-from-schema)
    - 1.3 [Const Assertion Enum with Zod](#13-const-assertion-enum-with-zod)
-2. [Schema Usage](#2-schema-usage) - **HIGH**
-   - 2.1 [Schema Composition](#21-schema-composition)
-   - 2.2 [Create Model Instances](#22-create-model-instances)
+   - 1.4 [Schema Composition](#14-schema-composition)
+   - 1.5 [Create Model Instances](#15-create-model-instances)
 
 ---
 
-## 1. Schema Definition
+## 1. Schema Patterns
 
 **Impact: HIGH**
 
@@ -150,13 +149,7 @@ Reference:
 [Zod Enums](https://zod.dev/?id=zod-enums)
 [TypeScript const assertions](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions)
 
----
-
-## 2. Schema Usage
-
-**Impact: HIGH**
-
-### 2.1 Schema Composition
+### 1.4 Schema Composition
 
 **Impact: HIGH (reuses existing schemas without duplication)**
 
@@ -216,7 +209,7 @@ Reference:
 
 ---
 
-### 2.2 Create Model Instances
+### 1.5 Create Model Instances
 
 **Impact: HIGH (centralizes instance creation with auto-generated base fields and schema validation)**
 
