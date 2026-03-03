@@ -33,7 +33,3 @@ Read rule files for examples:
 rules/ipc-type-safe-architecture.md
 rules/ipc-app-error-system.md
 ```
-
-## Full Compiled Document
-
-For expanded guidance: `AGENTS.md`

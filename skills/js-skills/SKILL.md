@@ -58,7 +58,3 @@ Each rule file contains:
 - Incorrect implementation example
 - Correct implementation example
 - Reference links
-
-## Full Compiled Document
-
-For the complete expanded guide: `AGENTS.md`
