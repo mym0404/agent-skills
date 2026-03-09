@@ -14,7 +14,7 @@ There are no build, lint, or test commands — this is a pure Markdown + JSON do
 | Skill | Version | Rules | Description |
 |-------|---------|-------|-------------|
 | `electron-skills` | 1.0.0 | 2 | Type-safe Electron IPC architecture |
-| `js-skills` | 2.0.0 | 5 | Zod schema definition patterns |
+| `js-skills` | 2.1.0 | 6 | Zod schema definition patterns, dayjs date/time conventions |
 | `react-skills` | 2.0.0 | 2 | React data fetching (server-first + client AsyncBoundary) |
 
 ## Directory Structure
