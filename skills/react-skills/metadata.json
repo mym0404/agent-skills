@@ -1,12 +1,14 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "organization": "Engineering",
   "date": "March 2026",
-  "abstract": "React data fetching best practices — server-first loading and client-side Suspense patterns with AsyncBoundary + TanStack Query.",
+  "abstract": "React data fetching best practices plus guide-driven refactoring rules for adopting @mj-studio/react-util hooks and components.",
   "references": [
     "https://nextjs.org/docs/app/building-your-application/data-fetching",
     "https://suspensive.org/en/docs/react/Suspense",
     "https://tanstack.com/query/latest/docs/framework/react/reference/useSuspenseQuery",
-    "https://suspensive.org/en/docs/react/migration/migrate-to-v2"
+    "https://suspensive.org/en/docs/react/migration/migrate-to-v2",
+    "https://github.com/mj-studio-library/react-util",
+    "https://github.com/mj-studio-library/react-util/blob/master/llms.txt"
   ]
 }
