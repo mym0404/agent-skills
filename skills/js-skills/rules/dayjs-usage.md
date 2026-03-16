@@ -7,29 +7,23 @@ tags: dayjs, date, time, duration, formatting
 
 ## Dayjs Usage Patterns
 
-Use dayjs as the sole date/time library. Never mix with raw `Date` or `Date.now()`. Register plugins and locales in a single boot entry point.
+Use dayjs as the sole date/time library. Never mix with raw `Date` or `Date.now()`. Register plugins and locales in a single boot entry point. If the project already defines a standard dayjs plugin set, register all listed plugins there unless a concrete, documented runtime constraint requires leaving one out.
 
 ### Plugin Setup
 
-All plugin imports and registrations go in one boot/init file. Name plugin imports as `dayjs` + PascalCase plugin name + `Plugin`.
+All plugin imports and registrations go in one boot/init file. Name plugin imports as `dayjs` + PascalCase plugin name + `Plugin`. Prefer the full project-approved plugin set over partial registration.
 
 **Incorrect:**
 
 ```typescript
-// Scattered plugin registration across multiple files
+// Partial registration in the boot file
 import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
+import dayjsDurationPlugin from 'dayjs/plugin/duration';
 
-dayjs.extend(duration);
-
-// Another file does the same
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-
-dayjs.extend(utc);
+dayjs.extend(dayjsDurationPlugin);
 ```
 
-Why it fails: Plugin registration order becomes unpredictable. Import aliases are generic, making it unclear what `duration` or `utc` refers to in a large file.
+Why it fails: A centralized boot file exists, but it does not register the full plugin set the project expects. Features that rely on omitted plugins start failing later, and dayjs behavior becomes inconsistent across modules.
 
 **Correct:**
 
@@ -45,6 +39,7 @@ import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime';
 import dayjsIsoTimeZonePlugin from 'dayjs/plugin/timezone';
 import dayjsIsoUTCPlugin from 'dayjs/plugin/utc';
 
+// Register the full project-approved plugin set in one place.
 dayjs.extend(dayjsDurationPlugin);
 dayjs.extend(dayjsArraySupportPlugin);
 dayjs.extend(dayjsIsoWeekPlugin);
@@ -64,6 +59,8 @@ Plugin import naming:
 | `dayjs/plugin/isoWeek` | `dayjsIsoWeekPlugin` |
 | `dayjs/plugin/relativeTime` | `dayjsRelativeTimePlugin` |
 | `dayjs/plugin/arraySupport` | `dayjsArraySupportPlugin` |
+
+If the codebase documents a dayjs plugin list, treat that list as the default boot set and register all of it in the central dayjs boot file.
 
 ### Timestamp Operations
 

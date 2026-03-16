@@ -1,19 +1,20 @@
 ---
 name: js-skills
 description: >
-  Zod schema definition patterns and dayjs date/time handling conventions.
+  Zod schema definition patterns, dayjs date/time handling conventions,
+  and @mj-studio/js-util source-of-truth usage rules.
   Use when defining Zod schemas, creating domain models, integrating
-  const assertion enums with Zod validation, or working with dayjs
-  for date/time operations.
+  const assertion enums with Zod validation, working with dayjs
+  for date/time operations, or using @mj-studio/js-util functions.
 license: MIT
 metadata:
   author: mj
-  version: "2.1.0"
+  version: "2.2.1"
 ---
 
-# JS Skills — Zod Schema & Dayjs Patterns
+# JS Skills — Zod Schema, Dayjs & JS Util Patterns
 
-Consistent Zod schema definition rules and dayjs date/time conventions extracted from production domain modeling.
+Consistent Zod schema definition rules, dayjs date/time conventions, and upstream-source utility usage rules extracted from production domain modeling.
 
 ## When to Apply
 
@@ -26,6 +27,7 @@ Reference these guidelines when:
 - Creating model instances with auto-generated base fields
 - Setting up dayjs plugins and locale in a project
 - Working with timestamps, time arithmetic, formatting, or durations
+- Using or reviewing public APIs from `@mj-studio/js-util`
 
 ## Rule Categories by Priority
 
@@ -33,6 +35,7 @@ Reference these guidelines when:
 | -------- | ---------------- | ------ | --------- |
 | 1        | Schema Patterns  | HIGH   | `schema-` |
 | 2        | Dayjs Patterns   | HIGH   | `dayjs-`  |
+| 3        | JS Util Patterns | HIGH   | `js-util-` |
 
 ## Quick Reference
 
@@ -48,6 +51,10 @@ Reference these guidelines when:
 
 - `dayjs-usage` — Plugin setup, timestamp ops, time arithmetic, formatting, duration
 
+### 3. JS Util Patterns (HIGH)
+
+- `js-util-usage` — Use upstream `llms.txt` as the single source of truth for all `@mj-studio/js-util` public API usage and best practices
+
 ## How to Use
 
 Read individual rule files for details and examples:
@@ -59,6 +66,7 @@ rules/schema-const-enum.md
 rules/schema-composition.md
 rules/schema-create-model.md
 rules/dayjs-usage.md
+rules/js-util-usage.md
 ```
 
 Each rule file contains:

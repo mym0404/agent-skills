@@ -13,3 +13,8 @@ This file defines section ordering, impact levels, and filename prefixes.
 
 **Impact:** HIGH
 **Description:** Dayjs plugin setup, timestamp operations, time arithmetic, formatting, and duration patterns.
+
+## 3. JS Util Patterns (js-util)
+
+**Impact:** HIGH
+**Description:** Upstream source-of-truth usage rules for `@mj-studio/js-util` public APIs.
