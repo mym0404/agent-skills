@@ -2,19 +2,21 @@
 name: js-skills
 description: >
   Zod schema definition patterns, dayjs date/time handling conventions,
-  and @mj-studio/js-util guide-driven refactoring rules.
+  @mj-studio/js-util guide-driven refactoring rules, and class-based
+  module patterns.
   Use when defining Zod schemas, creating domain models, integrating
   const assertion enums with Zod validation, working with dayjs
-  for date/time operations, or using @mj-studio/js-util functions.
+  for date/time operations, using @mj-studio/js-util functions, or
+  building stateful modules in JavaScript/TypeScript.
 license: MIT
 metadata:
   author: mj
-  version: "2.3.1"
+  version: "2.4.1"
 ---
 
 # JS Skills — Zod Schema, Dayjs & JS Util Patterns
 
-Consistent Zod schema definition rules, dayjs date/time conventions, and guide-driven utility refactoring rules extracted from production domain modeling.
+Consistent Zod schema definition rules, dayjs date/time conventions, guide-driven utility refactoring rules, and class-based module patterns extracted from production domain modeling.
 
 ## When to Apply
 
@@ -28,6 +30,7 @@ Reference these guidelines when:
 - Setting up dayjs plugins and locale in a project
 - Working with timestamps, time arithmetic, formatting, or durations
 - Using or reviewing public APIs from `@mj-studio/js-util`
+- Building a stateful module with internal mutable state and related methods
 
 ## Rule Categories by Priority
 
@@ -36,6 +39,7 @@ Reference these guidelines when:
 | 1        | Schema Patterns  | HIGH   | `schema-` |
 | 2        | Dayjs Patterns   | HIGH   | `dayjs-`  |
 | 3        | JS Util Patterns | HIGH   | `js-util-` |
+| 4        | Module Patterns  | HIGH   | `module-` |
 
 ## Quick Reference
 
@@ -55,6 +59,10 @@ Reference these guidelines when:
 
 - `js-util-usage` — Use upstream `llms.txt` to discover, apply, and refactor toward `@mj-studio/js-util` helpers instead of bespoke utility code
 
+### 4. Module Patterns (HIGH)
+
+- `module-class-over-factory` — Use a class instead of a closure factory object when a module owns mutable state and related methods
+
 ## How to Use
 
 Read individual rule files for details and examples:
@@ -67,6 +75,7 @@ rules/schema-composition.md
 rules/schema-create-model.md
 rules/dayjs-usage.md
 rules/js-util-usage.md
+rules/module-class-over-factory.md
 ```
 
 Each rule file contains:

@@ -18,3 +18,8 @@ This file defines section ordering, impact levels, and filename prefixes.
 
 **Impact:** HIGH
 **Description:** Guide-driven rules for adopting `@mj-studio/js-util` helpers to simplify and refactor project code.
+
+## 4. Module Patterns (module)
+
+**Impact:** HIGH
+**Description:** Prefer class-based modules over closure factories when a module owns mutable state and related methods.
