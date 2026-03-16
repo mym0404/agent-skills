@@ -2,19 +2,19 @@
 name: js-skills
 description: >
   Zod schema definition patterns, dayjs date/time handling conventions,
-  and @mj-studio/js-util source-of-truth usage rules.
+  and @mj-studio/js-util guide-driven refactoring rules.
   Use when defining Zod schemas, creating domain models, integrating
   const assertion enums with Zod validation, working with dayjs
   for date/time operations, or using @mj-studio/js-util functions.
 license: MIT
 metadata:
   author: mj
-  version: "2.2.1"
+  version: "2.3.1"
 ---
 
 # JS Skills — Zod Schema, Dayjs & JS Util Patterns
 
-Consistent Zod schema definition rules, dayjs date/time conventions, and upstream-source utility usage rules extracted from production domain modeling.
+Consistent Zod schema definition rules, dayjs date/time conventions, and guide-driven utility refactoring rules extracted from production domain modeling.
 
 ## When to Apply
 
@@ -53,7 +53,7 @@ Reference these guidelines when:
 
 ### 3. JS Util Patterns (HIGH)
 
-- `js-util-usage` — Use upstream `llms.txt` as the single source of truth for all `@mj-studio/js-util` public API usage and best practices
+- `js-util-usage` — Use upstream `llms.txt` to discover, apply, and refactor toward `@mj-studio/js-util` helpers instead of bespoke utility code
 
 ## How to Use
 

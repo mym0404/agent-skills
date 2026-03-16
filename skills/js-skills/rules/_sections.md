@@ -17,4 +17,4 @@ This file defines section ordering, impact levels, and filename prefixes.
 ## 3. JS Util Patterns (js-util)
 
 **Impact:** HIGH
-**Description:** Upstream source-of-truth usage rules for `@mj-studio/js-util` public APIs.
+**Description:** Guide-driven rules for adopting `@mj-studio/js-util` helpers to simplify and refactor project code.
