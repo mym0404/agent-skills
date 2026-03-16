@@ -7,17 +7,17 @@ description: >
   Use when defining Zod schemas, creating domain models, integrating
   const assertion enums with Zod validation, working with dayjs
   for date/time operations, using @mj-studio/js-util functions, or
-  building stateful modules and broad-domain folder structures in
-  JavaScript/TypeScript.
+  building stateful modules, Zustand stores, and broad-domain folder
+  structures in JavaScript/TypeScript.
 license: MIT
 metadata:
   author: mj
-  version: "2.5.4"
+  version: "2.6.0"
 ---
 
 # JS Skills — Schema, Dayjs, Util, Module & Structure Patterns
 
-Consistent Zod schema definition rules, dayjs date/time conventions, guide-driven utility refactoring rules, class-based module patterns, and feature-first architecture patterns extracted from production domain modeling.
+Consistent Zod schema definition rules, dayjs date/time conventions, guide-driven utility refactoring rules, class-based module patterns, Zustand store patterns, and feature-first architecture patterns extracted from production domain modeling.
 
 ## When to Apply
 
@@ -32,6 +32,7 @@ Reference these guidelines when:
 - Working with timestamps, time arithmetic, formatting, or durations
 - Using or reviewing public APIs from `@mj-studio/js-util`
 - Building a stateful module with internal mutable state and related methods
+- Creating standard, persisted, or provider-based Zustand stores
 - Organizing code by feature folders with `feature/common` for shared pieces
 
 ## Rule Categories by Priority
@@ -42,7 +43,8 @@ Reference these guidelines when:
 | 2        | Dayjs Patterns   | HIGH   | `dayjs-`  |
 | 3        | JS Util Patterns | HIGH   | `js-util-` |
 | 4        | Module Patterns  | HIGH   | `module-` |
-| 5        | Architecture Patterns | HIGH | `architecture-` |
+| 5        | Zustand Patterns | HIGH   | `zustand-` |
+| 6        | Architecture Patterns | HIGH | `architecture-` |
 
 ## Quick Reference
 
@@ -66,7 +68,11 @@ Reference these guidelines when:
 
 - `module-class-over-factory` — Use a class instead of a closure factory object when a module owns mutable state and related methods
 
-### 5. Architecture Patterns (HIGH)
+### 5. Zustand Patterns (HIGH)
+
+- `zustand-store-patterns` — Use consistent patterns for normal stores, persisted stores, and provider-backed stores
+
+### 6. Architecture Patterns (HIGH)
 
 - `architecture-broad-domain-nesting` — Organize code by feature, keep shared pieces in `feature/common`, and nest submodules under the owning feature
 
@@ -83,6 +89,7 @@ rules/schema-create-model.md
 rules/dayjs-usage.md
 rules/js-util-usage.md
 rules/module-class-over-factory.md
+rules/zustand-store-patterns.md
 rules/architecture-broad-domain-nesting.md
 ```
 

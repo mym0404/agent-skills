@@ -24,7 +24,12 @@ This file defines section ordering, impact levels, and filename prefixes.
 **Impact:** HIGH
 **Description:** Prefer class-based modules over closure factories when a module owns mutable state and related methods.
 
-## 5. Architecture Patterns (architecture)
+## 5. Zustand Patterns (zustand)
+
+**Impact:** HIGH
+**Description:** Use consistent patterns for standard stores, persisted stores, and provider-backed stores with Zustand.
+
+## 6. Architecture Patterns (architecture)
 
 **Impact:** HIGH
 **Description:** Organize code by feature, keep shared code in `feature/common`, and nest submodules under the owning feature.
