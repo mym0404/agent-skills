@@ -1,14 +1,15 @@
 {
-  "version": "2.4.1",
+  "version": "2.5.4",
   "organization": "Engineering",
   "date": "March 2026",
-  "abstract": "Zod schema definition patterns, dayjs date/time handling conventions, guide-driven refactoring rules for @mj-studio/js-util, and class-based stateful module patterns.",
+  "abstract": "Zod schema definition patterns, dayjs date/time handling conventions, guide-driven refactoring rules for @mj-studio/js-util, class-based stateful module patterns, and feature-first folder architecture rules.",
   "references": [
     "https://zod.dev",
     "https://github.com/colinhacks/zod",
     "https://day.js.org",
     "https://github.com/mj-studio-library/js-util",
     "https://github.com/mj-studio-library/js-util/blob/master/llms.txt",
-    "https://www.typescriptlang.org/docs/handbook/2/classes.html"
+    "https://www.typescriptlang.org/docs/handbook/2/classes.html",
+    "https://martinfowler.com/bliki/BoundedContext.html"
   ]
 }

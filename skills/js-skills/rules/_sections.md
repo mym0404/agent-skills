@@ -23,3 +23,8 @@ This file defines section ordering, impact levels, and filename prefixes.
 
 **Impact:** HIGH
 **Description:** Prefer class-based modules over closure factories when a module owns mutable state and related methods.
+
+## 5. Architecture Patterns (architecture)
+
+**Impact:** HIGH
+**Description:** Organize code by feature, keep shared code in `feature/common`, and nest submodules under the owning feature.
