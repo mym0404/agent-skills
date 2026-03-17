@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Electron Skills
@@ -23,7 +23,7 @@ End-to-end type-safe IPC architecture for Electron apps.
 ## Quick Reference
 
 - `ipc-type-safe-architecture` — Central API type, helper functions, preload bridges, main handlers, 5-step wiring process
-- `ipc-app-error-system` — Structured error handling across IPC boundary with throwAppError / catchAppError
+- `ipc-app-error-system` — Structured IPC error handling with internal parseAppError and renderer-facing catchAppError
 
 ## How to Use
 

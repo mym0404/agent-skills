@@ -7,7 +7,7 @@ tags: electron, ipc, error-handling, app-error
 
 ## Structured Error Handling Across IPC Boundary
 
-Electron IPC serializes errors as strings. A structured error system ensures main process errors are thrown with a code + message + payload, serialized across IPC, parsed back in the renderer, and routed to the correct handler by error code.
+Electron IPC serializes errors as strings. A structured error system ensures main process errors are thrown with a code + message + payload, serialized across IPC, parsed internally, and routed in the renderer through a single public entrypoint: `catchAppError`.
 
 **Incorrect — unstructured error handling:**
 
@@ -113,9 +113,9 @@ export function throwAppError(
 }
 ```
 
-### 3. Parse errors across IPC boundary
+### 3. Parse errors across IPC boundary internally
 
-`parseAppError` extracts the JSON-encoded `AppError` from an `Error.message` that may be wrapped by Electron's IPC layer.
+`parseAppError` extracts the JSON-encoded `AppError` from an `Error.message` that may be wrapped by Electron's IPC layer. Treat it as an internal helper for IPC utilities such as `catchAppError` and `registerIpcMainHandle`, not as a renderer-facing API.
 
 ```typescript
 export const parseAppError = (error: unknown): AppError | null => {
@@ -149,7 +149,7 @@ export const parseAppError = (error: unknown): AppError | null => {
 
 ### 4. Catch errors in renderer by code
 
-`catchAppError` parses the error and routes to the matching handler by code. Unmatched codes fall through to `DEFAULT`.
+`catchAppError` is the renderer-facing error utility. It parses the error internally and routes to the matching handler by code. Unmatched codes fall through to `DEFAULT`.
 
 ```typescript
 export const catchAppError = (
@@ -192,6 +192,12 @@ onError: (e) => {
 },
 ```
 
+Renderer rule:
+
+- Use `catchAppError` directly inside `catch`, `onError`, or similar renderer error boundaries.
+- Do not call `parseAppError` directly from renderer code.
+- Do not add extra renderer-side app-error utilities unless there is a concrete need that `catchAppError` cannot handle.
+
 ### 5. Wire into registerIpcMainHandle
 
 The IPC handler helper catches errors thrown in main process handlers, preserves `AppErrorClass` instances, and re-wraps unstructured errors.
@@ -221,7 +227,8 @@ export const registerIpcMainHandle = <T extends keyof API, K extends keyof API[T
 - Every known error condition gets an `AppErrorCode` entry
 - Main process uses `throwAppError` — never raw `throw new Error`
 - Renderer uses `catchAppError` with explicit code handlers + `DEFAULT` fallback
-- `parseAppError` handles Electron's IPC message wrapping
+- `parseAppError` is internal-only and handles Electron's IPC message wrapping
+- Renderer should not need `parseAppError` or additional app-error helper utilities beyond `catchAppError`
 - `registerIpcMainHandle` preserves `AppErrorClass` across IPC boundary
 - Add new error codes to the `AppErrorCode` union and `appErrorMessages` record together
 

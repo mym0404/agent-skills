@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "organization": "Engineering",
   "date": "March 2026",
-  "abstract": "Type-safe Electron IPC architecture with centralized API types, helper functions, and structured implementation process.",
+  "abstract": "Type-safe Electron IPC architecture with centralized API types, helper functions, and a structured AppError flow where renderer code uses catchAppError.",
   "references": [
     "https://www.electronjs.org/docs/latest/tutorial/ipc",
     "https://www.electronjs.org/docs/latest/api/context-bridge",

@@ -13,7 +13,7 @@ There are no build, lint, or test commands — this is a pure Markdown + JSON do
 
 | Skill | Version | Rules | Description |
 |-------|---------|-------|-------------|
-| `electron-skills` | 1.0.0 | 2 | Type-safe Electron IPC architecture |
+| `electron-skills` | 1.0.1 | 2 | Type-safe Electron IPC architecture |
 | `js-skills` | 2.6.0 | 10 | Zod, dayjs, `@mj-studio/js-util`, class-based modules, Zustand, and feature-first architecture |
 | `react-skills` | 2.1.0 | 3 | React data fetching plus `@mj-studio/react-util` guide-driven refactoring |
 
