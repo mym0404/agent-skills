@@ -29,8 +29,9 @@ Why it fails: No schema validation at creation time. Base field generation is du
 **Correct:**
 
 ```typescript
-import { createModel } from '@domain/model/Base';
-import { basicRecordSchema } from '@domain/model/BasicRecord';
+// src/feature/auth/model/createAuthRecord.ts
+import { createModel } from './Base';
+import { basicRecordSchema } from './BasicRecord';
 
 const record = createModel(basicRecordSchema, {
   sequence: 1,

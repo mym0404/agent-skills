@@ -39,7 +39,7 @@ Rules:
 | File name     | PascalCase                | `BasicRecord.ts`        |
 | Schema const  | camelCase + `Schema`      | `basicRecordSchema`     |
 | Inferred type | PascalCase (= file name)  | `BasicRecord`           |
-| Directory     | `domain/model/`           | `src/domain/model/`     |
+| Directory     | `feature/{domain}/model/` | `src/feature/auth/model/` |
 
 One schema per file. The file name matches the exported type name.
 

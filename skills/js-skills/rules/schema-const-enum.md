@@ -25,14 +25,14 @@ Why it fails: Literal values are duplicated — adding a new status requires upd
 **Correct:**
 
 ```typescript
-// src/domain/types/Status.ts
+// src/feature/auth/types/Status.ts
 export const allStatuses = ['pending', 'active', 'inactive'] as const;
 export type Status = (typeof allStatuses)[number];
 ```
 
 ```typescript
 // In schema file — reference the const array
-import { allStatuses } from '@domain/types/Status';
+import { allStatuses } from '../types/Status';
 
 export const recordSchema = baseModelSchema.extend({
   status: z.enum(allStatuses),
@@ -45,7 +45,7 @@ Naming rules:
 | ---------- | ----------------------------- | ----------------- |
 | Array      | `all` + PascalCase plural     | `allStatuses`     |
 | Type       | PascalCase singular           | `Status`          |
-| Location   | `domain/types/`              | `Status.ts`       |
+| Location   | `feature/{domain}/types/`    | `Status.ts`       |
 
 Runtime usage:
 

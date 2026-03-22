@@ -7,12 +7,13 @@ description: >
   Use when defining Zod schemas, creating domain models, integrating
   const assertion enums with Zod validation, working with dayjs
   for date/time operations, using @mj-studio/js-util functions, or
-  building stateful modules, Zustand stores, and broad-domain folder
-  structures in JavaScript/TypeScript.
+  building stateful modules, Zustand stores, and feature-first folder
+  structures where feature-specific code lives under `feature/{domain}` in
+  JavaScript/TypeScript.
 license: MIT
 metadata:
   author: mj
-  version: "2.6.0"
+  version: "2.6.1"
 ---
 
 # JS Skills — Schema, Dayjs, Util, Module & Structure Patterns
@@ -33,7 +34,7 @@ Reference these guidelines when:
 - Using or reviewing public APIs from `@mj-studio/js-util`
 - Building a stateful module with internal mutable state and related methods
 - Creating standard, persisted, or provider-based Zustand stores
-- Organizing code by feature folders with `feature/common` for shared pieces
+- Organizing code by feature folders with `feature/{domain}` and `feature/common` for shared pieces
 
 ## Rule Categories by Priority
 
@@ -74,7 +75,7 @@ Reference these guidelines when:
 
 ### 6. Architecture Patterns (HIGH)
 
-- `architecture-broad-domain-nesting` — Organize code by feature, keep shared pieces in `feature/common`, and nest submodules under the owning feature
+- `architecture-broad-domain-nesting` — Organize code by feature, keep feature-specific code under `feature/{domain}`, keep shared pieces in `feature/common`, and nest submodules under the owning feature
 
 ## How to Use
 

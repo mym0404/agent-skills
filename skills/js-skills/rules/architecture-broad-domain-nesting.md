@@ -1,18 +1,20 @@
 ---
-title: Organize Code by Feature and Keep Shared Pieces in feature/common
+title: Organize Code by Feature and Keep Feature-Specific Code Inside feature/{domain}
 impact: HIGH
-impactDescription: Keeps feature ownership clear by grouping code by feature, keeping shared code in feature/common, and nesting submodules under the owning feature
+impactDescription: Keeps feature ownership clear by grouping code by feature, keeping feature-specific code inside feature folders, keeping shared code in feature/common, and nesting submodules under the owning feature
 tags: typescript, javascript, architecture, domain, folder, feature
 ---
 
-## Organize Code by Feature and Keep Shared Pieces in feature/common
+## Organize Code by Feature and Keep Feature-Specific Code Inside feature/{domain}
 
-When a codebase is organized by folders, prefer feature-first structure. Top-level feature folders should represent real product/application features, shared cross-feature code should live under `feature/common`, and submodules should stay inside the feature that owns them instead of becoming new sibling roots.
+When a codebase is organized by folders, prefer feature-first structure. Top-level feature folders should represent real product/application features, feature-specific code such as `model`, `types`, and `ui` should live under `feature/{domain}`, shared cross-feature code should live under `feature/common`, and submodules should stay inside the feature that owns them instead of becoming new sibling roots.
 
 **Incorrect:**
 
 ```text
-src/feature/campaigns/
+src/model/auth/User.ts
+src/types/auth/Role.ts
+src/ui/auth/LoginPage.tsx
 src/feature/campaign-logs/
 src/feature/campaign-results/
 src/feature/hooks/
@@ -20,7 +22,7 @@ src/feature/utils/
 src/feature/components/
 ```
 
-Why it fails: Related code gets split by technical type instead of ownership. Shared and feature-specific pieces are mixed together, and parent-owned areas such as `campaign-logs` or `campaign-results` drift into fake top-level features.
+Why it fails: Related code gets split by technical type instead of ownership. Shared and feature-specific pieces are mixed together, feature-owned folders escape their feature boundary, and parent-owned areas such as `campaign-logs` or `campaign-results` drift into fake top-level features.
 
 **Correct:**
 
@@ -33,7 +35,14 @@ src/
       utils/
       ui/
         components/
+    auth/
+      model/
+      types/
+      ui/
+        pages/
     campaigns/
+      model/
+      types/
       hooks/
       providers/
       repositories/
@@ -44,6 +53,8 @@ src/
       logs/
       results/
     accounts/
+      model/
+      types/
       hooks/
       providers/
       repositories/
@@ -54,6 +65,8 @@ src/
 
 Feature folders may contain only the subfolders they actually need. Common examples are:
 
+- `model/`
+- `types/`
 - `utils/`
 - `hooks/`
 - `providers/`
@@ -65,6 +78,7 @@ Feature folders may contain only the subfolders they actually need. Common examp
 Apply this rule as follows:
 
 - Split primary application code by feature ownership first.
+- Put feature-specific folders such as `model`, `types`, and feature-local `ui` inside `feature/{domain}/`.
 - Put cross-feature reusable code in `feature/common/`.
 - Keep parent-owned submodules such as `logs`, `results`, `forms`, or `templates` under the owning feature.
 - Do not create new top-level feature folders just because a nested area has multiple files.
