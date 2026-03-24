@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "2.8.0"
+  version: "2.9.2"
 ---
 
 # JS Skills — Schema, Dayjs, Util, Module & Structure Patterns
@@ -51,7 +51,7 @@ Reference these guidelines when:
 
 ### 1. Schema Patterns (HIGH)
 
-- `schema-definition-patterns` — Current Zod 4 definition helpers, naming, type inference, enum reuse, composition, and createModel flow
+- `schema-definition-patterns` — Current Zod 4 definition helpers, logical schema grouping, type inference, composition, and createModel flow
 
 ### 2. Dayjs Patterns (HIGH)
 

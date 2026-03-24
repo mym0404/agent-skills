@@ -1,53 +1,58 @@
 ---
 title: Schema Definition Patterns
 impact: HIGH
-impactDescription: Keeps Zod schema definitions current, consistent, composable, and aligned with domain model creation
+impactDescription: Keeps Zod schema definitions current, logically grouped, composable, and aligned with domain model creation
 tags: zod, schema, naming, composition, inference, createModel, zod4
 ---
 
 ## Schema Definition Patterns
 
-Use one cohesive schema flow: verify current Zod APIs with Context7, define schemas with current helpers, infer types from schemas, reuse meaningful fragments, and create instances through schema-validated model factories.
+Use one cohesive schema flow: verify current Zod APIs with Context7, group related schemas and helpers by domain ownership, infer types from schemas, reuse meaningful fragments, and create instances through schema-validated model factories.
 
-### Naming and Type Inference
+### Naming, Grouping, and Type Inference
 
-Follow consistent naming for schema files, schema constants, and inferred types. Never define a duplicate TypeScript type beside the schema.
+Follow consistent naming for schema files, schema constants, and inferred types. The primary rule is logical grouping, not forced file splitting. Never define a duplicate TypeScript type beside the schema.
 
 **Incorrect:**
 
 ```typescript
-// File: basic_record.ts
-export const BasicRecordSchema = z.object({
-  sequence: z.int(),
-  name: z.string(),
-});
+// File: misc.ts
+export const schema = z.object({ ... });
+export const sourceSchema = z.object({ ... });
+export const resolvedSchema = z.object({ ... });
 
-export type BasicRecordType = {
-  sequence: number;
-  name: string;
+export type ProfileType = {
+  ...
 };
 ```
 
-Why it fails: The file name is inconsistent, the schema naming does not match project convention, and the duplicated type can drift from the schema.
+Why it fails: The file name hides ownership, schema names are too generic to search, and the duplicated type can drift from the schema.
 
 **Correct:**
 
 ```typescript
-// File: BasicRecord.ts
-export const basicRecordSchema = z.object({
-  sequence: z.int(),
-  name: z.string(),
+// File: ProductProfile.ts
+export const productProfileSourceSchema = z.object({
+  ...
 });
 
-export type BasicRecord = z.infer<typeof basicRecordSchema>;
+export const productProfileResolvedSchema = z.object({
+  ...
+});
+
+export type ProductProfileSource = z.infer<typeof productProfileSourceSchema>;
+export type ProductProfileResolved = z.infer<typeof productProfileResolvedSchema>;
 ```
 
 Rules:
 
-- File name uses PascalCase such as `BasicRecord.ts`.
-- Schema constant uses camelCase plus `Schema`, such as `basicRecordSchema`.
-- Inferred type uses PascalCase and matches the file name, such as `BasicRecord`.
-- Keep one schema per file when that file represents a named domain model.
+- Prefer file names that reflect the domain concept or cohesive schema family, such as `ProductProfile.ts`.
+- Schema constants should be specific and searchable, such as `productProfileSourceSchema`.
+- Inferred types should come from schemas with `z.infer`.
+- It is fine to export multiple related schemas from one file when they describe the same concept, such as source, resolved, derived, or request/response variants.
+- If a schema or schema family is broadly reused across the codebase, it is also fine to split it into its own dedicated file for shared ownership and discoverability.
+- Do not split files just to satisfy a one-schema-per-file rule.
+- Tightly coupled parser helpers, labels, or UI maps may stay in the same module when they clearly belong to that concept and are not broadly shared.
 
 ### Latest Zod Definition API
 
@@ -171,6 +176,8 @@ export const divisionPreferenceSchema = baseModelSchema.extend({
   secondPreferenceScores: detailedScoreSchema.optional(),
 });
 ```
+
+Related derived schemas can live beside the base schema when that grouping makes the domain easier to understand. Prefer splitting only when a schema family grows independent responsibilities or is reused by clearly separate modules.
 
 ### Model Creation
 
