@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "2.6.1"
+  version: "2.8.0"
 ---
 
 # JS Skills — Schema, Dayjs, Util, Module & Structure Patterns
@@ -51,11 +51,7 @@ Reference these guidelines when:
 
 ### 1. Schema Patterns (HIGH)
 
-- `schema-naming-convention` — Consistent naming for schemas, types, and files
-- `schema-type-inference` — Derive types from schemas with z.infer
-- `schema-const-enum` — Const assertion arrays + z.enum integration
-- `schema-composition` — Compose schemas via nesting, pick, partial
-- `schema-create-model` — Use createModel for instance creation with auto base fields
+- `schema-definition-patterns` — Current Zod 4 definition helpers, naming, type inference, enum reuse, composition, and createModel flow
 
 ### 2. Dayjs Patterns (HIGH)
 
@@ -81,12 +77,8 @@ Reference these guidelines when:
 
 Read individual rule files for details and examples:
 
-```
-rules/schema-naming-convention.md
-rules/schema-type-inference.md
-rules/schema-const-enum.md
-rules/schema-composition.md
-rules/schema-create-model.md
+``` 
+rules/schema-definition-patterns.md
 rules/dayjs-usage.md
 rules/js-util-usage.md
 rules/module-class-over-factory.md
