@@ -32,4 +32,4 @@ This file defines section ordering, impact levels, and filename prefixes.
 ## 6. Architecture Patterns (architecture)
 
 **Impact:** HIGH
-**Description:** Organize code by feature, keep feature-specific code in `feature/{domain}`, keep shared code in `feature/common`, and nest submodules under the owning feature.
+**Description:** Organize code by feature, default to `feature/{domain}`, allow only one nested `feature/{parent}/feature/{child}` split when unavoidable, and keep shared code in `feature/common`.

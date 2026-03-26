@@ -9,6 +9,8 @@ tags: typescript, javascript, architecture, domain, folder, feature
 
 When a codebase is organized by folders, prefer feature-first structure. Top-level feature folders should represent real product/application features, feature-specific code such as `model`, `types`, and `ui` should live under `feature/{domain}`, shared cross-feature code should live under `feature/common`, and submodules should stay inside the feature that owns them instead of becoming new sibling roots.
 
+Default to `feature/{domain}`. Only when a child area is genuinely large enough and tightly coupled to its parent feature, allow one nested split as `feature/{parent}/feature/{child}/...`. Do not let nested feature depth exceed 2.
+
 **Incorrect:**
 
 ```text
@@ -20,9 +22,10 @@ src/feature/campaign-results/
 src/feature/hooks/
 src/feature/utils/
 src/feature/components/
+src/feature/campaigns/feature/results/feature/export/
 ```
 
-Why it fails: Related code gets split by technical type instead of ownership. Shared and feature-specific pieces are mixed together, feature-owned folders escape their feature boundary, and parent-owned areas such as `campaign-logs` or `campaign-results` drift into fake top-level features.
+Why it fails: Related code gets split by technical type instead of ownership. Shared and feature-specific pieces are mixed together, feature-owned folders escape their feature boundary, parent-owned areas such as `campaign-logs` or `campaign-results` drift into fake top-level features, and nested feature depth grows beyond what remains easy to scan.
 
 **Correct:**
 
@@ -50,8 +53,9 @@ src/
       ui/
         components/
         pages/
-      logs/
-      results/
+      feature/
+        logs/
+        results/
     accounts/
       model/
       types/
@@ -81,6 +85,8 @@ Apply this rule as follows:
 - Put feature-specific folders such as `model`, `types`, and feature-local `ui` inside `feature/{domain}/`.
 - Put cross-feature reusable code in `feature/common/`.
 - Keep parent-owned submodules such as `logs`, `results`, `forms`, or `templates` under the owning feature.
+- Only when separation is unavoidable, split a child area as `feature/{parent}/feature/{child}/`.
+- Do not nest `feature/.../feature/.../feature/...`; maximum nested feature depth is 2.
 - Do not create new top-level feature folders just because a nested area has multiple files.
 
 Use this pattern when:

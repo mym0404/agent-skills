@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "2.9.2"
+  version: "2.9.3"
 ---
 
 # JS Skills — Schema, Dayjs, Util, Module & Structure Patterns
@@ -71,7 +71,7 @@ Reference these guidelines when:
 
 ### 6. Architecture Patterns (HIGH)
 
-- `architecture-broad-domain-nesting` — Organize code by feature, keep feature-specific code under `feature/{domain}`, keep shared pieces in `feature/common`, and nest submodules under the owning feature
+- `architecture-broad-domain-nesting` — Organize code by feature, default to `feature/{domain}`, allow only one nested `feature/{parent}/feature/{child}` split when unavoidable, keep shared pieces in `feature/common`
 
 ## How to Use
 
