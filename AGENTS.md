@@ -9,13 +9,19 @@ Each skill is a self-contained directory under `skills/` with documentation, rul
 
 There are no build, lint, or test commands — this is a pure Markdown + JSON documentation repo.
 
+## Skill Invocation Policy
+
+All skills in this repository must remain explicit-invocation only.
+If a skill includes `agents/openai.yaml`, set `policy.allow_implicit_invocation: false` and keep it false on every update.
+
 ## Current Skills
 
 | Skill | Version | Rules | Description |
 |-------|---------|-------|-------------|
-| `electron-skills` | 1.0.1 | 2 | Type-safe Electron IPC architecture |
-| `js-skills` | 2.9.2 | 6 | Zod, dayjs, `@mj-studio/js-util`, class-based modules, Zustand, and feature-first architecture |
-| `react-skills` | 2.1.0 | 3 | React data fetching plus `@mj-studio/react-util` guide-driven refactoring |
+| `electron-skills` | 1.0.2 | 2 | Type-safe Electron IPC architecture |
+| `js-skills` | 2.9.4 | 6 | Zod, dayjs, `@mj-studio/js-util`, class-based modules, Zustand, and feature-first architecture |
+| `react-skills` | 2.1.1 | 3 | React data fetching plus `@mj-studio/react-util` guide-driven refactoring |
+| `style-js-ts` | 1.0.1 | 0 | JavaScript/TypeScript and React JSX style guide |
 
 ## Directory Structure
 

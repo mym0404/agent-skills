@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "organization": "Engineering",
   "date": "March 2026",
   "abstract": "Type-safe Electron IPC architecture with centralized API types, helper functions, and a structured AppError flow where renderer code uses catchAppError.",

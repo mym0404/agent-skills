@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Style JS TS

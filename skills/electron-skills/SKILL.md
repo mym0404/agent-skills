@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Electron Skills

@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.1.1",
   "organization": "Engineering",
   "date": "March 2026",
   "abstract": "React data fetching best practices plus guide-driven refactoring rules for adopting @mj-studio/react-util hooks and components.",
