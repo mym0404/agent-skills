@@ -1,0 +1,7 @@
+interface:
+  display_name: "Style JS TS"
+  short_description: "JS/TS and React JSX style guide"
+  default_prompt: "Use $style-js-ts to review or refactor this JS/TS code for style consistency."
+
+policy:
+  allow_implicit_invocation: false

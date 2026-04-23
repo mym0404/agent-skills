@@ -18,10 +18,10 @@ If a skill includes `agents/openai.yaml`, set `policy.allow_implicit_invocation:
 
 | Skill | Version | Rules | Description |
 |-------|---------|-------|-------------|
-| `electron-skills` | 1.0.2 | 2 | Type-safe Electron IPC architecture |
-| `js-skills` | 2.9.4 | 6 | Zod, dayjs, `@mj-studio/js-util`, class-based modules, Zustand, and feature-first architecture |
-| `react-skills` | 2.1.1 | 3 | React data fetching plus `@mj-studio/react-util` guide-driven refactoring |
-| `style-js-ts` | 1.0.1 | 0 | JavaScript/TypeScript and React JSX style guide |
+| `electron-skills` | 1.0.3 | 2 | Type-safe Electron IPC architecture |
+| `js-skills` | 2.9.5 | 6 | Zod, dayjs, `@mj-studio/js-util`, class-based modules, Zustand, and feature-first architecture |
+| `react-skills` | 2.1.2 | 3 | React data fetching plus `@mj-studio/react-util` guide-driven refactoring |
+| `style-js-ts` | 1.0.2 | 0 | JavaScript/TypeScript and React JSX style guide |
 
 ## Directory Structure
 

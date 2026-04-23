@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "2.9.4"
+  version: "2.9.5"
 ---
 
 # JS Skills — Schema, Dayjs, Util, Module & Structure Patterns

@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: mj
-  version: "2.1.1"
+  version: "2.1.2"
 ---
 
 # React Skills

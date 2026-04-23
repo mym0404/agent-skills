@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "organization": "Engineering",
   "date": "April 2026",
   "abstract": "JavaScript, TypeScript, and React JSX style guidance focused on readable function shapes, low-cognitive-load structure, type design, module boundaries, and practical formatting decisions.",
